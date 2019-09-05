@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import createAuth0Client from '@auth0/auth0-spa-js';
+import PropTypes from 'prop-types';
 
 // executes when user successfully signs in to redirect back to home site
 const DEFAULT_REDIRECT_CALLBACK = () => {
@@ -14,7 +15,7 @@ export const Auth0Context = React.createContext();
 // hook useContext 
 export const useAuth0 = () => useContext(Auth0Context);
 
-export default function Auth0Provider({ 
+function Auth0Provider({ 
   children, 
   onRedirectCallback = DEFAULT_REDIRECT_CALLBACK, 
   ...initOptions }) {
@@ -63,3 +64,10 @@ export default function Auth0Provider({
     </Auth0Context.Provider>
   );
 }
+
+Auth0Provider.propTypes = {
+  children: PropTypes.object.isRequired,
+  onRedirectCallback: PropTypes.func
+};
+
+export default Auth0Provider;

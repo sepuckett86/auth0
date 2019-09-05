@@ -11,7 +11,9 @@ export default function App() {
   <>
     {!isAuthenticated && <button onClick={login}>Login</button>}
     {isAuthenticated && <button onClick={logout}>Logout</button>}
-    <AllDogs/>
+    {isAuthenticated && <AllDogs/>}
+    {!isAuthenticated && <p>Log in to see dog list</p>}
+
   </>);
 }
 
